@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest02.html</title>
+<style type="text/css">
+	.item
+	{
+		border: solid 2px red;
+		color: white;
+		background: black;
+	}
+</style>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+	/*
+	function test()
+	{
+		alert("함수 호출 확인 ~!!!");
+		var a = 10
+	}
+	*/
+	
+	// jquery();
+	// jquery(document).ready();
+	// $();
+	// $(document).ready();
+	
+	/*
+	$(document).ready(function(
+	{
+		// alert("함수 호출 확인");
+		
+		// ※ 우리가... 또는 이 페이지를 이용하는 사용자가...
+		//    뭔가 건드리지 않아도...
+		//    (즉, 특별한 이벤트를 발생시키지 않아도...)
+		//    자동으로 처리할 수 있는 영역
+	});
+	*/
+	
+	$(function()
+	{
+		// alert("함수 호출 확인");
+		
+		// ※ 우리가... 또는 이 페이지를 이용하는 사용자가...
+		//    뭔가 건드리지 않아도...
+		//    (즉, 특별한 이벤트를 발생시키지 않아도...)
+		//    자동으로 처리할 수 있는 영역
+	});
+	
+	
+</script>
+
+</head>
+<body>
+
+<!-- <h1 onclick="test()">박현수</h1> -->
+<h1 class="item">우수정</h1>
+
+</body>
+</html>

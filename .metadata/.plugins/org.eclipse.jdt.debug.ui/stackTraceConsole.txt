@@ -1,0 +1,10 @@
+for(int i=1; i<6; i++)
+	{
+		MemberDTO dto = new MemberDTO();
+		
+		dto.setName(request.getParameter("name" + i));
+		dto.setTel(request.getParameter("tel"+ i));
+		dto.setAddr(request.getParameter("addr"+ i));
+		
+		lists.add(dto);
+	} 

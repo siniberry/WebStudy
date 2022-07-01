@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test025.html</title>
+<style type="text/css">
+	*{color: #FA5882; font-family: 나눔바른펜;}
+	input {font-family: 나눔바른펜; font-weight: bold;}
+	input:focus {background-color: #fddde8;}
+	input.btn{background-color: #fddde8; width: 90px; font-weight: bold; font-family: 나눔바른펜;}
+	input.btn:hover {color: #FA5882;}
+	.txt{text-align: center;}
+	txtarea{font-family: 나눔바른펜; font-weight: bold;}
+</style>
+
+  <script type="text/javascript">
+
+        function calcCalendar()
+        {
+            var year = Number(document.getElementById("txtYear").value);
+            var month = Number(document.getElementById("txtMonth").value);
+            var m = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+            //1년 1월 1일부터 입력받은 해당년도의 전년도 12월 31일까지의 날수
+            var nal = (year-1)*365 + Math.floor((year-1)/4) - Math.floor((year-1)/100) + Math.floor((year-1)/400);
+
+            //해당 년도 해당월 1일까지의 날수
+            for (var i = 0; i < month-1 ; i++)
+            {
+                if( Math.floor(year%4) == 0 && Math.floor(year%100) != 0 || Math.floor(year%400) == 0)
+                {
+                    m[1] ++;
+                    nal +=  Number(m[i]);
+                }
+                else
+                {
+                    nal += Number(m[i]);
+                }
+            }
+            nal++;
+
+            //입력한 년도와 입력한 월의 1일의 요일 산출
+            var day = nal%7;
+
+            var lastDay = m[month-1];
+
+            if(month == 2 && Math.floor(year%4) == 0 && Math.floor(year%100) != 0 || Math.floor(year%400) == 0)
+            {
+                lastDay = 29;
+            }
+
+            //alert(lastDay);
+
+            var tableNode = document.getElementById("calendarTbl");
+            var trNode = document.createElement("tr");
+
+            //1일 이전의 날 공백 찍기
+            for (var i = 0; i < day ; i++)
+            {
+                trNode.appendChild(tdNode(" "));
+            }
+
+            // 날짜 찍기
+            var i = 1;
+            for (i = 1; i <= lastDay ; i++)
+            {
+                trNode.appendChild(tdNode(i));
+
+                if((i+day)%7 == 0)
+                {
+                    tableNode.appendChild(trNode);
+                    var trNode = document.createElement("tr");
+                }
+            }
+
+            if(((i-1)+day)%7 != 0)
+            {
+                for (var j = 0; j < 7-(((i-1)+day)%7); j++)
+                {
+                    trNode.appendChild(tdNode(" "));
+                }
+            }
+
+            tableNode.appendChild(trNode);
+        }
+
+        function tdNode(val)
+        {
+            var textNode = document.createTextNode(val);
+            var tdNode = document.createElement("td");
+
+            tdNode.appendChild(textNode);
+
+            return tdNode;
+        }
+
+
+    </script>
+
+</head>
+<body>
+
+<div>
+	<h1>테이블 동적 생성으로 만년달력 그리기</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<input type="text" id="txtYear" class="txt" style="width: 67px">년
+		<input type="text" id="txtMonth" class="txt" style="width: 67px;">월
+		<br><br>
+
+		<button type="button" class="btn" style="width: 200px" onclick="calcCalendar()">만년달력 그리기</button>
+		<br><br>
+		
+        <table border="1" id="calendarTbl" >
+            <tr>
+                <th>일</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+                <th>토</th>
+            </tr>
+        </table>
+
+    </form>
+</div>
+
+
+
+</body>
+</html>

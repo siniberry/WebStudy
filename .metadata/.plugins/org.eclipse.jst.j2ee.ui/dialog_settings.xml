@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="J2EE_EXPORT_OVERWRITE" value="false"/>
+	<item key="J2EE_EXPORT_SOURCE" value="true"/>
+	<list key="MRU_RUNTIME_STORE">
+		<item value="Apache Tomcat v8.5"/>
+	</list>
+	<list key="J2EE_IMPORT_null">
+		<item value="D:\AjaxJquery04.war"/>
+		<item value="D:\AjaxJquery05.war"/>
+		<item value="D:\EmmetApp.war"/>
+		<item value="D:\JsonApp.war"/>
+		<item value="D:\JQueryApp.war"/>
+		<item value="D:\WebApp00.war"/>
+	</list>
+	<list key="J2EE_EXPORT_JST_WEB">
+		<item value="D:\BootstrapApp.war"/>
+		<item value="D:\Ajaxjquery06.war"/>
+		<item value="D:\AjaxJquery04.war"/>
+		<item value="D:\AjaxJquery03.war"/>
+		<item value="D:\AjaxJquery02.war"/>
+		<item value="D:\JsonApp.war"/>
+	</list>
+</section>

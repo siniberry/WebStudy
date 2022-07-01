@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest04</title>
+<style type="text/css" src="http://code.jquery.com/jquery.min.js"></style>
+
+<script type="text/javascript">
+
+	$("h1").click(function()
+	{
+		$(this).html(function(index, html)
+		{
+			return html+"★";
+		});	
+	});
+	
+	
+</script>
+</head>
+<body>
+
+<h1>click start1 :</h1>
+<h1>click start2 :</h1>
+
+</body>
+</html>

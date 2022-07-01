@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest08</title>
+</head>
+<body>
+
+show()/hide()/toggle()<br>
+slideDown()/slideUp()/slideToggle()<br>
+fadeIn()/fadeOut()/fadeToggle()<br>
+<br><br>
+
+<button>Toggle(토글) 버튼</button>
+<div>
+	<h1>jQuery Toggle</h1>
+	<p>
+		show()/hide()<br>
+		toggle()<br>
+		slideDown()/slideUp()<br>
+		slideToggle()<br>
+		fadeIn()/fadeOut()<br>
+		fadeToggle()<br>
+	</p>
+</div>
+
+<button>Toggle(토글) 버튼</button>
+<div>
+	<h1>jQuery Toggle</h1>
+	<p>
+		show()/hide()<br>
+		toggle()<br>
+		slideDown()/slideUp()<br>
+		slideToggle()<br>
+		fadeIn()/fadeOut()<br>
+		fadeToggle()<br>
+	</p>
+</div>
+
+<button>Toggle(토글) 버튼</button>
+<div>
+	<h1>jQuery Toggle</h1>
+	<p>
+		show()/hide()<br>
+		toggle()<br>
+		slideDown()/slideUp()<br>
+		slideToggle()<br>
+		fadeIn()/fadeOut()<br>
+		fadeToggle()<br>
+	</p>
+</div>
+
+<button>Toggle(토글) 버튼</button>
+<div>
+	<h1>jQuery Toggle</h1>
+	<p>
+		show()/hide()<br>
+		toggle()<br>
+		slideDown()/slideUp()<br>
+		slideToggle()<br>
+		fadeIn()/fadeOut()<br>
+		fadeToggle()<br>
+	</p>
+</div>
+
+
+</body>
+</html>

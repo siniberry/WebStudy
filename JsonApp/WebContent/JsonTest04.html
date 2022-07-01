@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JsonTest04.html</title>
+<script type="text/javascript">
+
+	var myJsonObject4 =
+		{
+			"test" : function()
+			{
+				alert("Method Test~!!!");
+			}
+		}
+	
+</script>
+</head>
+<body>
+
+	<input type="button" value="click1" onclick="myJsonObject4.test">
+	<!-- Ⅹ -->
+	
+	<input type="button" value="click2" onclick="alert(myJsonObject4.test)">
+	<!-- 
+		function()
+			{
+				alert("Method Test~!!!");
+			}
+	 -->
+	 
+	<br><br>
+	
+	
+	<input type="button" value="click3" onclick="alert(myJsonObject4.test())"> 
+	 <!-- →
+	 	Method Test~!!!
+	 	↓
+		undefined
+	 -->
+	 <!-- 함수처리 처리되지만 undefined가 뜨면서 정상적인 방법이 아니라는 걸 알수있음 -->
+	 
+	 <!-- 『eval()』 : 변수를 자바스크립트의 함수처럼 사용할 수 있도록 해 주는 함수 -->
+	 <!-- 			   즉, 정적인 문자열을 동적인 코드 형식으로 처리 -->
+	 <input type="button" value="click4" onclick="eval('a=' + myJsonObject4.test); a();">
+	 <!-- 
+	 	a라는 변수에 ㅇㅇ를 대입해라 → myJsonObject4.test를
+	 	이렇게 되면 더이상 a는 함수가 아닌 a()로 사용할 수 있게된다.
+	 -->
+
+
+
+
+
+</body>
+</html>

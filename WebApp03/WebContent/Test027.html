@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test027.html</title>
+<style type="text/css">
+	*{color: #FA5882; font-family: 나눔바른펜;}
+	input {font-family: 나눔바른펜; font-weight: bold;}
+	input:focus {background-color: #fddde8;}
+	.btn{background-color: #fddde8; width: 90px; font-weight: bold; font-family: 나눔바른펜;}
+	.btn:hover {color: #FA5882;}
+	.txt{text-align: left; font-weight: bold; font-family: 나눔바른펜; background-color: #fddde8;}
+</style>
+<script type="text/javascript">
+	
+	function lotto()
+	{
+		
+		var count = Number(document.getElementById("jang").value);
+		var numberArr = new Array();
+		
+		for (var i = 0; i < count; i++)
+		{
+			for (var j = 0; j < 6; j++)
+			{
+				numberArr[j] = parseInt(Math.random()*45)+1;
+				
+				if (j>0)
+				{
+					for (var k = 0; k < j; k++)
+					{
+						if (numberArr[j] ==  numberArr[k])
+						{
+							numberArr[j] = parseInt(Math.random()*45)+1;
+						}
+					}
+				}
+			}
+			
+			
+			numberArr.sort(function(a,b) 
+			{
+				return a-b;
+			});
+			
+			for (var l = 0; l < numberArr.length; l++)
+			{
+				document.getElementById("result").value += numberArr[l] + " ";
+			}
+			
+			document.getElementById("result").value += "\n";
+			
+			
+		}
+		
+	}
+	
+	
+
+</script>
+</head>
+<body>
+
+<!-- 
+	로또 번호(1~45)를 중복되지 않은 정수 6개를 생성하여
+	출력해주는 페이지를 구현한다.
+	HTML, CSS, Javascript 를 활용한다.
+	난수 발생 함수를 활용한다.
+	번호순으로 (오름차순) 정렬하여 출력할 수 있도록 한다.
+	주문한 장 수 만큼 출력할 수 있도록 한다.
+	
+	페이지 레이아웃
+	------------------------------------------------------
+	로또  [        ] 장      <주문하기>
+				└ text			└ button
+	결과
+	---------------------------------	─ textarea
+	
+	
+	---------------------------------
+	-------------------------------------------------------
+ -->
+<div>
+	<h1>로또 만들기</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		로또 
+		<input type="text" id="jang" class="txt"> 장
+		<button type="button"class="btn" onclick="lotto()"> 주문 하기 </button>
+		<br><br>
+		
+		결과
+		<br>
+		<textarea rows="10" cols="40" id="result" readonly="readonly"></textarea>
+		
+	</form>
+</div>
+
+</body>
+</html>

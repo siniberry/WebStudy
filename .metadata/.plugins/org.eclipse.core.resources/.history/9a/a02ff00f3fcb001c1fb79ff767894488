@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest02.html</title>
+<style type="text/css">
+	.item
+	{
+		border: solid 2px red;
+		color: white;
+		background: black;
+	}
+</style>
+
+<script type="text/javascript">
+
+	/*
+	function test()
+	{
+		alert("함수 호출 확인 ~!!!");
+		var a = 10
+	}
+	*/
+	
+</script>
+
+</head>
+<body>
+
+<!-- <h1 onclick="test()">박현수</h1> -->
+<h1 class="item">우수정</h1>
+
+</body>
+</html>

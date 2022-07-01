@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest07.html</title>
+</head>
+<body>
+
+<label>
+	<input type="checkbox" id="allCheck">
+	<span style="font-weight: bold;">모두 선택</span>
+</label>
+<br><br>
+
+<div>
+	<input type="checkbox" id="check1"><label for="check1">바나나</label><br>
+	<input type="checkbox" id="check2"><label for="check2">딸기</label><br>
+	<input type="checkbox" id="check3"><label for="check3">복숭아</label><br>
+	<input type="checkbox" id="check4"><label for="check4">수박</label><br>
+	<input type="checkbox" id="check5"><label for="check5">멜론</label><br>
+</div>
+
+</body>
+</html>

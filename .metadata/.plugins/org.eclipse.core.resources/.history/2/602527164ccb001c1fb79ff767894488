@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest05</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function()
+	{
+		// 키보드 관련 이벤트
+	});
+	
+</script>
+
+</head>
+<body>
+
+키보드 관련 이벤트<br>
+1. keydown / 2. keypress / 3. keyup 순으로 이벤트 발생<br>
+
+<div>
+	<p>남기고 싶은 말</p>
+	<h1>10</h1>
+	<textarea rows="5" cols="70"></textarea>
+</div>
+
+</body>
+</html>

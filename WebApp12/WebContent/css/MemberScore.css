@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+*
+{
+	font-size: 18px;
+	color: #FA5882;
+	font-family: 나눔바른펜;
+	font-weight: bold;
+}
+
+input
+{
+	border-radius: 4px;
+}
+
+button
+{
+	background-color: #fddde8;
+}
+
+button:hover
+{
+	color: white;
+	background-color: #fddde8;
+}
+
+button:active
+{
+	background-color: #fddde8;
+}
+
+.table
+{
+	border-collapse: collapse;
+}
+
+.table th, .table td
+{
+	border: 1px solid gray;
+	border-left: 0p;
+	border-right: 0px;
+	
+	padding: 3px;
+	line-height: 150%;
+	text-align: center;
+}
+
+table th
+{
+	font-weight: bold;
+	background-color: #fddde8;
+}
+
+.btn01
+{
+	font-size 10pt;
+	color:#FA5882;
+	width: 45px;
+	height: 30px;
+	background-color: #fddde8;
+}
+
+.btn02
+{
+	font-size 10pt;
+	color:#ff80c0;
+	width: 45px;
+	height: 30px;
+	background-color: #fddde8;
+}
+
+.btn02:hover
+{
+	color: gray;
+}
+
+.errMsg
+{
+	font-size: small;
+	color: red;
+	display: none;
+}
+
+.numTh
+{
+	width: 50px;
+}
+
+.nameTh
+{
+	width: 100px;
+}
+
+.txtScore
+{
+	width: 100px;
+	text-align: right;
+}

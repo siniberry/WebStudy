@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test018.html</title>
+<style type="text/css">
+	*
+	{
+		color: #FA5882;
+		font-family: 나눔바른펜;
+		font-weight: bold;
+	}
+
+
+</style>
+<script type="text/javascript">
+
+	function actionPerformed()
+	{
+		//alert("확인");
+		
+		var korStr = document.getElementById("kor").value;
+		var engStr = document.getElementById("eng").value;
+		var matStr = document.getElementById("mat").value;
+		
+		var nKor = parseInt(korStr);
+		var nEng = parseInt(engStr);
+		var nMat = parseInt(matStr);
+
+		var nTot = 0;
+		var nAvg = 0;
+		var panStr = "";
+		
+		nTot = nKor + nEng + nMat;
+		
+		//alert(nTot);
+		
+		nAvg = Math.round(nTot/3);
+		
+		document.getElementById("avg").value = nAvg;
+		
+		if (nKor>=40 && nEng>=40 && nMat>=40 && nAvg>=60)
+		{
+			panStr = "합격";
+		}
+		else if (nAvg>=60)
+			panStr = "과락";
+		
+		else
+			panStr = "불합격";
+		
+		document.getElementById("pan").value = panStr;
+		
+	}
+
+</script>
+
+</head>
+<body style="text-align: center;">
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<!-- 
+	사용자로부터 이름, 국어점수, 영어점수, 수학점수를 입력받아
+	평균점수와 판정결과를 출력하는 페이지를 구성한다.
+	판정결과는 합격, 과락, 불합격 중 하나로 처리한다.
+	
+	합격은 모든 과목 점수가 40점 이상이면서 평균 60점 이상인 경우
+	과락은 평균이 60점 이상이지만 한 과목이라도 과목 점수가 40점 미만의 과목이 존재하는 경우
+	불합격은 평균이 60점 미만인 경우로 처리한다.
+	
+	HTML, CSS, Javascript 활용
+	
+	페이지 레이아웃
+	---------------------------------------------------------------------
+	이름	 [		]
+	국어점수 [		]
+	영어점수 [		]
+	수학점수 [		]
+	
+	< 처리결과확인 >
+	
+	평균		판정결과
+	[ 		]	[		]
+	
+	---------------------------------------------------------------------
+ -->
+
+<div>
+
+	<p>이름 &nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="text" style="width: 80px;" id="name" class="txtScore"></p>
+	<p>국어점수
+	<input type="text" style="width: 80px;" id="kor" class="txtScore"></p>
+	<p>영어점수
+	<input type="text" style="width: 80px;" id="eng" class="txtScore"></p>
+	<p>수학점수
+	<input type="text" style="width: 80px;" id="mat" class="txtScore"></p>
+	<br>
+	<p>
+	<input type="button" style="height: 25px; width: 150px;" class="btn" value="처리결과확인" onclick="actionPerformed()"></p>
+	<br>
+	<p>평균 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 판정결과<br>
+	<input type="text" style="width: 70px;" id="avg" class="txt" disabled="disabled"> 
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="text" style="width: 70px;" id="pan" class="txt" disabled="disabled">
+	</p>
+	<br>
+	<hr>
+</div>
+
+
+</body>
+</html>

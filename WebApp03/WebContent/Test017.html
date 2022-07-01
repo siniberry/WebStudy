@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test017.html</title>
+<style type="text/css">
+	*
+	{
+		color: #FA5882;
+		font-family: 나눔바른펜;
+		font-weight: bold;
+	}
+	
+	input:focus 
+	{
+		background-color: #fbd5da;
+	}
+	
+	input:btn
+	{
+		width: 80px;
+		font-weight: bold;
+		font-family: 맑은 고딕;
+	}
+	
+	input:hover 
+	{
+	color: #FA5882;
+	}
+
+	input:active 
+	{
+	color: #FE2E64;
+	}
+
+	.txtCoin
+	{
+		width: 80px;
+	}
+	
+	.txtResult
+	{
+		width: 80px;
+		background-color: #fbd5da;
+	}
+
+</style>
+
+<script type="text/javascript">
+
+	
+	function countMoney(obj)
+	{
+		var vmoney = document.getElementById("coin").value;
+		var tot = 0;
+		var vm500 = 0;
+		var vm100 = 0;
+		var vm50 = 0;
+		var vm10 = 0;
+		
+		document.getElementById("tot").value = vmoney;
+		
+		vm500 = vmoney%500;
+	}
+	
+	document.getElementById("tot").value = vResult;
+
+</script>
+
+
+</head>
+<body>
+
+<!-- 
+	특정 금액(10원 ~ 990원)을 사용자로부터 입력받아
+	화폐 단위로 구분하여 출력하는 페이지를 구성한다.
+	화폐단위는 편의상 오백원, 백원, 오십원, 십원으로 구분한다.
+	HTML, CSS, Javascript를 활용한다.
+	
+	페이지 기본 레이아웃 구성
+	----------------------------------------------------------------
+	
+	금액 [             ]원
+	
+	<결과> <취소>
+	
+	총액     [           ]원
+	오백원   [           ]개
+	백원     [           ]개
+	오십원   [           ]개
+	십원     [           ]개
+	
+	----------------------------------------------------------------
+
+ -->
+
+
+<div>
+	<hr>
+	
+	<form>
+	<p>금액 <input type="text" id="money" class=txtCoin> 원</p>
+	
+	
+	
+	<input type="button" id="btn" value="결과">
+	<input type="reset" id="btn" value="취소">
+	<br><br>
+	
+	<p>총액 &nbsp&nbsp
+	<input  type="text" id="tot" class="txtResult" disabled="disabled"> 원</p>
+
+	<p>오백원 
+	<input  type="text" id="m500" class="txtResult" disabled="disabled"> 개</p>
+
+	<p>백원 &nbsp&nbsp
+	<input  type="text" id="m100" class="txtResult" disabled="disabled"> 개</p>
+
+	<p>오십원 
+	<input  type="text" id="m50" class="txtResult" disabled="disabled"> 개</p>
+
+	<p>십원 &nbsp&nbsp
+	<input  type="text" id="m10" class="txtResult" disabled="disabled"> 개</p>
+	<br><br>
+	
+	</form>
+	<hr>
+</div>
+
+
+</body>
+</html>

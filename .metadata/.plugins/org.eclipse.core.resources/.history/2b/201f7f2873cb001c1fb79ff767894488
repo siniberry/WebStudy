@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQTest08</title>
+</head>
+<body>
+
+show()/hide()/toggle()<br>
+slideDown()/slideUp()/slideToggle()<br>
+fadeIn()/fadeOut()/fadeToggle()<br>
+<br><br>
+
+</body>
+</html>

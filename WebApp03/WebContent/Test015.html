@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test015.html</title>
+<style type="text/css">
+	*
+	{
+		color: #F7819F;
+		font-family: 맑은 고딕;
+	}	
+	input.box:focus
+	{
+		background-color: #F6CECE;
+	}
+	input.btn:hover 
+	{
+		color: #FA5858;
+		background-color: #F8E0E0;
+		font-weight: bold;
+	}
+	
+	input.numberBox
+	{
+		width: 50px;
+		text-align: right;
+	}
+
+	
+</style>
+
+<script type="text/javascript">
+
+
+	function actionBtnA()
+	{
+		// 테스트
+		//alert("A 버튼 클릭 확인~!!!");
+		
+		//alert(document.getElementById("txtLeft"));
+		//alert(document.getElementById("txtLeft").value);
+		
+		//var txt01 = document.getElementById("txtLeft").value;
+		//var txt02 = document.getElementById("txtRight").value;
+		
+		var txt01 = document.getElementById("txtLeft");
+		var txt02 = document.getElementById("txtRight");
+		
+		//alert(txt01.value);
+		//alert(txt02);
+		
+		var leftStr = txt01.value;
+		
+		txt02.value = leftStr;
+	}
+
+	function actionBtnB()
+	{
+		// 테스트
+		//alert("B 버튼 클릭 확인~!!!");
+		
+		var txt01 = document.getElementById("txtLeft");
+		var txt02 = document.getElementById("txtRight");
+	
+		var rightStr = txt02.value;
+		
+		txt01.value = rightStr;
+	}
+	
+	function actionBtnResult()
+	{
+		
+		var num1 = document.getElementById("txtNumber01").value;
+		var num2 = document.getElementById("txtNumber02").value;
+		
+		//var result = num1 + num2;		//-- 문자열 결합
+		//var result = num1 + num2;		//-- 문자열 결합된 결과물을 정수형태로 변환
+		
+		// var result = parseInt(num1) + parseInt(num2);
+		
+		var result = Number(num1) + Number(num2);
+		
+		// 확인
+		//alert(result);
+		
+		document.getElementById("txtResult").value = result;
+		
+		
+		/*
+		document.getElementById("txtResult").value
+		= parseInt(document.getElementById("txtNumber01").value) + parseInt(document.getElementById("txtNumber02").value);
+		*/
+	}
+	
+</script>
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 기본 관찰</h1>
+	<hr>
+</div>
+
+<div>
+	<br>
+	<input type="text" class="box" id="txtLeft">
+	<input type="button" value="A버튼" class="btn" id="btnA" onclick="actionBtnA()">
+	<input type="button" value="B버튼" class="btn" id="btnB" onclick="actionBtnB()">
+	<input type="text" class="box" id="txtRight">
+	<br>
+	<hr>
+	<br>
+	
+	
+	<input type="text" class="numberBox" id="txtNumber01">
+	+
+	<input type="text" class="numberBox" id="txtNumber02">
+	<input type="button" value=" = " class="btn" id='btnResult' onclick="actionBtnResult()">
+	<input type="text" class="numberBox" id="txtResult">
+	
+	
+</div>
+
+
+</body>
+</html>

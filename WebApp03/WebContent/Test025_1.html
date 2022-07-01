@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test025_1.html</title>
+
+<style type="text/css">
+  *
+	{font-family: Mapo금빛나루; font-weight: bold; text-align: left;}
+	input:focus{background-color: beige;}
+	.btn{background-color: pink; width: 90; text-align:center;}
+	.btn:hover{color: brown;}
+	.btn:active{color: white;}
+	td {text-align: center;}
+	.txt{background-color: skyblue; text-align: center;}
+
+</style>
+
+<script type="text/javascript">
+
+	function actionCalendar()
+	{
+		// 확인
+		// alert("함수 호출 확인~!!!");
+		
+		// 사용자가 입력한 년, 월 가져오기
+		var yearStr = document.getElementById("txtYear").value;
+		var monthStr = document.getElementById("txtMonth").value;
+		
+		// 문자열 형태로 확인해볼 수 있는 유효성 검사 삽입 가능~!!!
+		// 문자열 잘라서 연도를 입력할 때 aaa 사용하지 않았는지, 특수문자를 입력하진 않았는지 검사
+		
+		var year = parseInt(yearStr);
+		var month = parseInt(monthStr);
+		
+		// 확인
+		//alert("입력년도 : " + year + ", 입력월 : " + month);
+		
+		/*
+		if (year < 1)
+		{
+			alert("입력 년도가 유효하지 않습니다.");
+			return;
+		}
+		
+		if(month < 1 || month > 12)
+		{
+			alert("입력 월이 유효하지 않습니다.")
+			return;
+		}
+		*/
+		
+		if (year < 1 || month < 1 || month > 12)
+		{
+			alert("입력한 년 또는 월이 유효하지 않습니다~!!!");
+			return;
+		}
+		
+		// 입력한 년월의 1일의 요일과 마지막일을 알면 무조건 달력을 그려낼 수 있다.
+		
+		// ※ 사용자가 입력한 년도, 월 → 여기에 해당하는 1일의 요일을 알아내기!!!
+		
+		// Math.floor() → 소수부 해당하는 부분을 절삭 → parseInt() 함수와 동일한 기능
+		// Math.ceil()  → 소수부 올림
+		// Math.round() → 소수부 반올림
+		
+		var total = 0; //-- 누적합을 넣을거라 0으로 초기화
+		
+		// 1단계. 1년 1월 1일 부터... 입력 년도 기준 전년도 12월 31일 까지의 총 날짜 수 구함.
+		// 입력한 년도가 아니라 전년도를 구하는 이유는 현재 당해년도는 아직 끝나지 않아 중간 어디쯤에 있기 때문
+		
+	
+		// 자바에서는 나누기를 했을 때 몫을 취하므로 정수로 반환되지만
+		// 자스에서는 나누기를 했을 때 실수형으로 소수점까지 나오므로 parseInt() 처리해준다.
+		total = (year-1)*365 + parseInt((year-1)/4) - parseInt((year-1)/100) + parseInt((year-1)/400);
+		
+		
+		// 의미확인
+		//alert("1년1월1일 - " + (year-1) + "년12월31일 : " + total);
+		//--==>> 1년1월1일 ~ 2021년12월31일 : 738155
+		
+		
+		// 2단계. 해당 년도 1월 1일 부터... 해당 년도 해당 월 1일 까지의 총 날짜 수 구해서 1단계에 더하기
+		var m = [31,28,31,30,31,30,31,31,30,31,30,31];
+		
+		// 테스트
+		// alert(m.length);
+		//--==>> 12
+		
+		/* A 방식 → m[1]의 값을 28로 그대로 가져왔으므로 추가연산 필요.
+		for (var i=0; i<month-1; i++)
+		{
+			total += m[i];
+		}
+		total++; //-- 1일까지 더해진 것. 2월이 28일 때의 가정
+		
+		// 2월이 29일이었을 때의 가정
+		if (month >= 3 && (year%4==0 && year%100!=0 || year%400==0))
+		{
+			total++; 
+		}
+		*/
+		
+		// B 방식 → m[1]의 값을 29로 바꾸었으므로 추가연산 필요없음.
+		if (year%4==0 && year%100!=0 || year%400==0)
+			m[1] = 29;	
+		
+		for (var i = 0; i < month-1; i++)
+			total += m[i];
+		total++;
+		
+		
+		// 확인
+		//alert("1년1월1일 ~ " + year + "년" + month + "월1일 : " + total + "일");
+		//--==>> 1년1월1일 ~ 2022년4월1일 : 738246일
+		
+		
+		// 3단계. 해당 년도 해당 월의 첫 날(1일)의 요일 구함.
+		var days = total % 7;
+		
+		// 확인
+		//alert(days);
+		//--==>> 5 (2022년 4월 기준) → 2022년 4월 1일은 금요일
+		//--==>> 3 (2022년 6월 기준) → 2022년 6월 1일은 수요일
+		
+		
+		// 4단계. 해당 년도 해당 월의 마지막 날짜 구함. (28일, 29일, 30일, 31일)
+		var lastDay = m[month-1];
+		
+		// A 방식으로 처리했을 경우 추가 연산
+		/*
+		if (month==2 && (year%4==0 && year%100!=0 || year%400==0))
+		{
+			lastDay = 29;
+		}
+		*/
+		
+		// 확인
+		//alert(lastDay);
+
+		
+		// 5단계. 해당 년도 해당 월 기준 달력 구성. (출력, 그리기)
+		
+		// 5-1 기존 테이블 활용하기
+		/*----------------------------------------------------------------------------------------------------------
+		var tableNode = document.getElementById("calendarTbl");		// <table id="calendarTbl">...</table>
+		
+		var trNode = document.createElement("tr");					//<tr></tr>
+		
+		// 해당 월의 1일이 시작되기 전에 빈 칸 td 채우기
+		// i<days 가 들어가는 이유는 월 경우 1, 화 경우 2 이렇게 그 날짜에 해당하는 것이 들어있음
+		for (var i=0; i<days; i++)
+		{
+			trNode.appendChild(createTdNode(""));		// 공백을 넘겨주면 이걸로 포함이 되어서 trNode로 올라갈 것이고
+		}	
+		
+		
+		// 1일 부터... 해당 월의 마지막 날짜까지 td 채우기
+		// 어디 날짜까지 td 채워졌느냐에 따라 마지막 빈 칸 td 채우는 것도 달라지기 때문에
+		// for문 안에 선언안하고 밖에 선언한 것.
+		var d=1;
+		
+		for (d=1; d<=lastDay; d++)
+		{
+			trNode.appendChild(createTdNode(d));			// 어떤 형태로 그려지는지 check~!!!			
+			
+			// 일요일을 그리기 시작할 때... 
+			// 기존 tr 구성을 마무리하고
+			// 다시 새로운 tr 을 구성
+		
+			// check ~!!!! ---------------------------------------
+
+			// 날짜를 하나하나 증가해서 d 는 증가하지만 days(시작요일)은 증가하지 않는다.(그대로)
+			if ((d+days)%7==0)								// 일요일을 그리기 전에...
+			{
+				
+				tableNode.appendChild(trNode);				// trNode 를 tableNode 에 추가
+				trNode = document.createElement("tr"); 		// 새로운 trNode 구성
+			}
+			//-----------------------------------------------------check~!!!
+		
+		}
+		
+		
+		// alert(d);
+		//-- 30일까지 출력한 날짜에서 확인 결과 → 31
+		//   반복문 for 문 안에서 d++이라 31이 되었지만 <=lastday 충족하지 못해서
+		//   {}를 못 들어갔을 뿐이지, d는 31이 되어 있음.
+		
+		
+		// 날짜 구성 이후 마지막 빈 칸 td 채우기
+		// 최종적으로 처리된 날짜가 일요일 개행이 적용되지 않은 경우에만...
+		if ( ((d-1)+days)%7 != 0 )
+		{
+			for (var i=0; i<7; i++, d++) // ★ 공백을 찍을 때 d도 증가해야 밑에 if 문 처리가 가능해. d가 증가 안하면 d도 고정값 days도 고정값이라 안움직여
+			{
+				trNode.appendChild(createTdNode(""));
+				
+				if ((d+days)%7==0) // 이 경우, 빠져나가라
+				{
+					tableNode.appendChild(trNode);
+					break;
+				}
+			}
+		}
+		
+		tableNode.appendChild(trNode);
+		
+		---------------------------------------------------------------------------------------------------------- 5-1 기존 테이블 활용하기 */
+		
+		
+		// 5-2 tbody 활용하기 		
+		/*----------------------------------------------------------------------------------------------------------
+			
+		var tableNode = document.getElementById("calendarTbl");
+		var tbodyNode = null;
+		
+		//alert(tableNode);							//--==>> [object HTMLTableElement]
+		//alert(tableNode.childNodes[0]);			//--==>> [object Text] -- 노드 확장/ 축소를 통해 테이블 하위계층이 보임. 테이블 노드의 자식 노드[0]번째 확인하니 text와 관련된 것을 확인.
+		//alert(tableNode.childNodes[0].nodeType);	//--==>> 3 (text의 노드타입. 브라우저마다 차이가 있음)
+		//alert(tableNode.childNodes[1]);			//--==>> [object HTMLTableSectionElement]
+		
+		
+		// 테이블을 확장해나가는 구조를 텍스트노드에 붙여나갈 것이 아니라
+		// tableSectionElement 에 붙여나갈 것이기 때문에
+		if (tableNode.childNodes[0].nodeType==1) 	// 인터넷 익스플로러인 경우, 테이블섹션엘리먼트에 해당하는 내용이기 때문에 이것을 tbodyNode 로 구성하겠다.
+			tbodyNode = tableNode.childNodes[0];	
+		else										// 익스플로러가 아닌 경우라면, tableNode.childNodes[0].nodeType → 3 인 경우이므로 
+			tbodyNode = tableNode.childNodes[1]; 	// HTMLTableSectionElement. 테이블 영역에 해당하는 요소가 될 것이다.
+		
+		// 결론적으로 HTMLTableSectionElement 을 tbodyNode 로 잡겠다는 뜻.	
+			
+		// 확인 
+		//alert(tbodyNode.childNodes.length); 	 	//--==>> 2 (0,1)
+		//-- 여기서 childNodes 의 length 는 테이블 노드의 tr/td 갯수를 반환하는 것이 아님.
+		//   노드구성이 어떻게 되어있느냐에 따른 length.
+		//alert(tbodyNode.childNodes[0]);			//--==>> [object HTMLTableRowElement] tr
+		//alert(tbodyNode.childNodes[1]);			//--==>> [object Text] text
+		
+		// tbodyNode 의 기존 자식 노드 삭제 과정
+		for (var n=tbodyNode.childNodes.length-1; n>=0; n--) // n이 0번째가 될 때까지 지워짐 → 모두 지워져
+		{
+			tbodyNode.removeChild(tbodyNode.childNodes[n]);
+		}
+		
+		// → 위에 수행하면 이런 형태만 남게 돼.
+		//<table></table>
+		//
+		
+		// trNode 를 위에서 복붙해오면 되는데 
+		// 그러면 요일명이 사라지게 돼. 
+		// 이전에는 table 안에 요일 넣어둬서 가져다썼는데 지금은 테이블 구조빼고 다 지웠으니까..
+		
+		var trNode = document.createElement("tr");			// <tr><tr>
+		
+		// 요일 이름 다시 출력하기
+		var dayName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+		for (var i=0; i<dayName.length; i++)
+		{
+			trNode.appendChild(createTdNode(dayName[i]));
+		}
+		tbodyNode.appendChild(trNode);
+		
+		
+		var trNode = document.createElement("tr");			// <tr><tr>
+		
+		// 해당 월의 1일이 시작되기 전에 빈 칸 td 채우기
+		for (var i=0; i<days; i++)
+		{
+			trNode.appendChild(createTdNode(""));	
+		}	
+		
+		// 1일 부터... 해당 월의 마지막 날짜까지 td 채우기
+		var d=1;
+		for (d=1; d<=lastDay; d++)
+		{
+			trNode.appendChild(createTdNode(d));
+			
+			// 일요일을 그리기 시작할 때... 기존 tr 구성을 마무리하고
+			// 다시 새로운 tr 을 구성하는 부분
+			if ((d+days)%7==0)	// 일요일을 그리기 전에...
+			{
+				tableNode.appendChild(trNode);
+				trNode = document.createElement("tr");
+			}
+		}
+		
+		// 날짜 구성 이후 마지막 빈 칸 td 채우기
+		if ( ((d-1)+days) != 0 )
+		{
+			for (var i=0; i<7; i++, d++)
+			{
+				trNode.appendChild(createTdNode(""));
+				
+				if ((d+days)%7==0)
+				{
+					tableNode.appendChild(trNode);
+					break;
+				}
+			}
+		}
+		
+		tableNode.appendChild(trNode);
+		
+		
+		---------------------------------------------------------------------------------------------------------- 5-2 tbody 활용하기 */
+		
+		
+		
+		
+		// 5-3 새로운 달력그리기
+		//----------------------------------------------------------------------------------------------------------
+			
+		var calendarBox = document.getElementById("newCalendarBox");
+		
+		var tableNode = document.createElement("table");			// <table></table>
+		
+		var trNode = document.createElement("tr");					// <tr></tr>
+		var dayName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+		for (var i=0; i<dayName.length; i++)
+			trNode.appendChild(createTdNode(dayName[i]));
+		tableNode.appendChild(trNode);
+		
+		//--> 이렇게 만들어진 테이블을 newCalendarBox 에 append
+		
+		// check ★
+		calendarBox.appendChild(tableNode);
+		
+		
+var trNode = document.createElement("tr");			// <tr><tr>
+		
+		// 해당 월의 1일이 시작되기 전에 빈 칸 td 채우기
+		for (var i=0; i<days; i++)
+		{
+			trNode.appendChild(createTdNode(""));	
+		}	
+		
+		// 1일 부터... 해당 월의 마지막 날짜까지 td 채우기
+		var d=1;
+		for (d=1; d<=lastDay; d++)
+		{
+			trNode.appendChild(createTdNode(d));
+			
+			// 일요일을 그리기 시작할 때... 기존 tr 구성을 마무리하고
+			// 다시 새로운 tr 을 구성하는 부분
+			if ((d+days)%7==0)	// 일요일을 그리기 전에...
+			{
+				tableNode.appendChild(trNode);
+				trNode = document.createElement("tr");
+			}
+		}
+		
+		// 날짜 구성 이후 마지막 빈 칸 td 채우기
+		if ( ((d-1)+days) != 0 )
+		{
+			for (var i=0; i<7; i++, d++)
+			{
+				trNode.appendChild(createTdNode(""));
+				
+				if ((d+days)%7==0)
+				{
+					tableNode.appendChild(trNode);
+					break;
+				}
+			}
+		}
+		
+		tableNode.appendChild(trNode);
+		
+		//---------------------------------------------------------------------------------------------------------- 5-3 새로운 달력 그리기
+	}
+	
+	
+	function createTdNode(val)						// "홍길동"
+	{
+		var textNode = document.createTextNode(val);// ㄴ"홍길동"
+		var tdNode = document.createElement("td");	//<td></td>
+		tdNode.appendChild(textNode);				//    ㄴ"홍길동"
+		return tdNode;
+	}
+
+
+</script>
+
+</head>
+<body>
+
+<!--  
+	만년달력 페이지를 구성한다.
+	HTML, CSS, Javascript 를 활용한다.
+	테이블 태그 동적 생성 구문을 활용한다.
+	
+	1단계. 1년 1월 1일 부터... 입력 년도 기준 전년도 12월 31일 까지의 총 날짜 수 구함.
+	2단계. 해당 년도 1월 1일 부터... 해당 년도 해당 월 1일 까지의 총 날짜 수 구함.
+	3단계. 해당 년도 해당 월의 첫 날(1일)의 요일 구함.
+	4단계. 해당 년도 해당 월의 마지막 날짜 구함.
+		   (28일, 29일, 30일, 31일)
+	5단계. 해당 년도 해당 월 기준 달력 구성. (출력, 그리기)
+ -->
+
+
+<div>
+	<h1>테이블 동적 생성으로 만년달력 그리기</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		<input type="text" id="txtYear" class="txt" style="width: 67px;"> 년
+		<input type="text" id="txtMonth" class="txt" style="width: 67px;"> 월
+		<br><br>
+		
+		<button type="button" class="btn" style="width: 200px;" onclick="actionCalendar()">
+		만년달력 그리기</button>
+		<br><br>
+		
+		<!-- 
+		<table border="2" id="calendarTbl">
+			<tr>
+				<th>일</th>
+				<th>월</th>
+				<th>화</th>
+				<th>수</th>
+				<th>목</th>
+				<th>금</th>
+				<th>토</th>
+			</tr>
+		</table>
+		-->
+		
+		<div id="newCalendarBox"></div>
+		
+	</form>
+</div>
+
+</body>
+</html>
